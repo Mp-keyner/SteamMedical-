@@ -10,7 +10,7 @@ import Logo from "../components/Logo";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const { BtnLogin } = useContext(AuthContext);
+  const { signInWithGoogle } = useContext(AuthContext);
   return (
     <div style={Styles.containerPages}>
       <div style={{ display: "flex" }}>
@@ -47,7 +47,7 @@ const Login = () => {
               }}
               onClick={(e) => {
                 e.preventDefault();
-                BtnLogin();
+                signInWithGoogle();
               }}
             >
               <img src={ImgGoogle} alt="" />
