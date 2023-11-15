@@ -5,12 +5,12 @@ import Facebook from "/img/Facebook.svg";
 import Youtube from "/img/Youtube.svg";
 import ColombiaGov from "/img/ColombiaGov.svg";
 import ClombiaVisa from "/img/ClombiaVisa.svg";
-import { GlobalStyles } from "../styles/GlobalStyles";
-import Logo from "../components/Logo";
-import { AuthContext } from "../context/AuthContext";
+import { GlobalStyles } from "../../styles/GlobalStyles";
+import Logo from "../../components/Logo";
+import { useLogin } from "../../hook/useLogin";
 
 const Login = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
+  const {singin} = useLogin();
   return (
     <div style={Styles.containerPages}>
       <div style={{ display: "flex" }}>
@@ -47,7 +47,7 @@ const Login = () => {
               }}
               onClick={(e) => {
                 e.preventDefault();
-                signInWithGoogle();
+                singin();
               }}
             >
               <img src={ImgGoogle} alt="" />

@@ -32,3 +32,5 @@ export const useAuth = () => {
     user,
   };
 };
+// que maneje datos del usuario logeado 
+// funiones init cerrere update user 

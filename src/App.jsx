@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./Pages/Login";
 import Layout from "./components/Layout";
-import ProtecteRouter from "./components/ProtecteRouter";
+import Login from "./Pages/auth/Login";
+import ProtecteRouter from './Pages/ProtecteRouter'
 
 const App = () => {
   return (
