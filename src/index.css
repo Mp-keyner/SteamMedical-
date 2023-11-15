@@ -4,9 +4,6 @@
   font-family: "Poppins", sans-serif;
   outline: none;
 }
-html {
-  background-color: red;
-}
 ::placeholder {
   color: white;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ImgGoogle from "/img/Google.svg";
 import instagram from "/img/instagram.svg";
 import Facebook from "/img/Facebook.svg";
@@ -7,14 +7,16 @@ import ColombiaGov from "/img/ColombiaGov.svg";
 import ClombiaVisa from "/img/ClombiaVisa.svg";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import Logo from "../components/Logo";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const { BtnLogin } = useContext(AuthContext);
   return (
     <div style={Styles.containerPages}>
       <div style={{ display: "flex" }}>
         <div style={{ ...Styles.containerSection, ...GlobalStyles.colum }}>
           <h1>STEAM MEDICAL</h1>
-          <p>Welcome back! Please enter your details.</p>
+          <p>¡Bienvenido de nuevo! Por favor ingrese sus datos.</p>
           <form style={Styles.Form}>
             <label htmlFor="email" style={Styles.containerInput}>
               <p>Email</p>
@@ -42,6 +44,10 @@ const Login = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "0.6pc",
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                BtnLogin();
               }}
             >
               <img src={ImgGoogle} alt="" />
