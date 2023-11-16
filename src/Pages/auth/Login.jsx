@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ImgGoogle from "/img/Google.svg";
 import instagram from "/img/instagram.svg";
 import Facebook from "/img/Facebook.svg";
@@ -8,9 +8,17 @@ import ClombiaVisa from "/img/ClombiaVisa.svg";
 import { GlobalStyles } from "../../styles/GlobalStyles";
 import Logo from "../../components/Logo";
 import { useLogin } from "../../hook/useLogin";
+import instance from "../../api/api";
 
 const Login = () => {
-  const {singin} = useLogin();
+  useEffect(() => {
+    const GetaData = async () => {
+      const users = await instance.get("/usuarios");
+      console.log(users);
+    };
+    GetaData();
+  }, []);
+  const { singin } = useLogin();
   return (
     <div style={Styles.containerPages}>
       <div style={{ display: "flex" }}>
