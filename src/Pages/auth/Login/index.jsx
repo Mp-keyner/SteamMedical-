@@ -1,19 +1,24 @@
 import React, { useContext, useEffect } from "react";
-import ImgGoogle from "/img/Google.svg";
-import instagram from "/img/instagram.svg";
-import Facebook from "/img/Facebook.svg";
-import Youtube from "/img/Youtube.svg";
-import ColombiaGov from "/img/ColombiaGov.svg";
-import ClombiaVisa from "/img/ClombiaVisa.svg";
-import { GlobalStyles } from "../../styles/GlobalStyles";
-import Logo from "../../components/Logo";
-import { useLogin } from "../../hook/useLogin";
-import instance from "../../api/api";
+import { GlobalStyles } from "../../../styles/GlobalStyles";
+import Logo from "../../../components/Logo";
+import { useLogin } from "../../../hook/useLogin";
+import instance from "../../../api/api";
+import Styles from "./Styles";
+import {
+  ColombiaGov,
+  ColombiaVida,
+  Eye,
+  EyeNot,
+  Facebook,
+  Google,
+  Instagram,
+  YouTube,
+} from "../../../../public/img/svg";
 
 const Login = () => {
   useEffect(() => {
     const GetaData = async () => {
-      const users = await instance.get("/usuarios");
+      const users = await instance.get("/testimony");
       console.log(users);
     };
     GetaData();
@@ -23,9 +28,11 @@ const Login = () => {
     <div style={Styles.containerPages}>
       <div style={{ display: "flex" }}>
         <div style={{ ...Styles.containerSection, ...GlobalStyles.colum }}>
-          <h1>STEAM MEDICAL</h1>
-          <p>¡Bienvenido de nuevo! Por favor ingrese sus datos.</p>
-          <form style={Styles.Form}>
+          <h1 style={Styles.h1}>STEAM MEDICAL</h1>
+          <p style={Styles.P}>
+            ¡Bienvenido de nuevo! Por favor ingrese sus datos.
+          </p>
+          <form style={{ ...Styles.Form, ...Styles.P }}>
             <label htmlFor="email" style={Styles.containerInput}>
               <p>Email</p>
               <input
@@ -44,7 +51,9 @@ const Login = () => {
                 style={GlobalStyles.borderBtn}
               />
             </label>
-            <button style={GlobalStyles.borderBtn}>Iniciar sesión</button>
+            <button style={{ ...GlobalStyles.borderBtn, ...Styles.P }}>
+              Iniciar sesión
+            </button>
             <button
               style={{
                 ...GlobalStyles.borderBtn,
@@ -52,13 +61,14 @@ const Login = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "0.6pc",
+                ...Styles.P,
               }}
               onClick={(e) => {
                 e.preventDefault();
                 singin();
               }}
             >
-              <img src={ImgGoogle} alt="" />
+              <Google width={2} color={"#fff"} />
               Inicia sesión con Google
             </button>
           </form>
@@ -75,11 +85,12 @@ const Login = () => {
             style={{
               fontSize: "2.5pc",
               fontWeight: "bold",
-              width: "344.956px",
+              width: "30pc",
               textOverflow: "ellipsis",
               //   border: "1px solid red",
               height: "9pc",
               //   marginBottom: "9pc",
+              ...Styles.h1,
             }}
           >
             Tu salud nuestra preocupación
@@ -92,6 +103,9 @@ const Login = () => {
             ...Styles.containerSection,
             height: "29vh",
             ...GlobalStyles.center,
+            width: "100%",
+            ...GlobalStyles.SpaceBetween,
+            padding: "0 15pc",
           }}
         >
           <div
@@ -99,8 +113,8 @@ const Login = () => {
               display: "flex",
               gap: "0.2pc",
               flexDirection: "column",
-              //   border: "1px solid red",
-              width: "18pc",
+              // border: "1px solid red",
+              width: "19pc",
             }}
           >
             <div
@@ -113,8 +127,8 @@ const Login = () => {
               <h2>SteamMedical</h2>
               <Logo color={"#fff"} widthSvg={"2pc"} colorHover={"red"} />
             </div>
-            <p>©2023 - SteamMedical.</p>
-            <p>Todos los derechos reservados.</p>
+            <p style={Styles.P}>©2023 - SteamMedical.</p>
+            <p style={Styles.P}>Todos los derechos reservados.</p>
             <div
               style={{
                 display: "flex",
@@ -122,59 +136,19 @@ const Login = () => {
                 gap: "0.6pc",
               }}
             >
-              <img src={instagram} alt="Instagram" />
-              <img src={Facebook} alt="Facebook" />
-              <img src={Youtube} alt="Youtube" />
+              <Instagram />
+              <Facebook />
+              <YouTube color={"#fff"} width={2} />
             </div>
           </div>
-        </div>
-        <div
-          style={{
-            ...Styles.containerSection,
-            height: "29vh",
-            ...GlobalStyles.colum,
-          }}
-        >
-          <img src={ColombiaGov} alt="ColombiaGov" width={150} />
-          <img src={ClombiaVisa} alt="ClombiaVisa" width={150} />
+          <div style={GlobalStyles.colum}>
+            <ColombiaVida />
+            <ColombiaGov />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-const Styles = {
-  containerPages: {
-    backgroundImage: "url('/img/LoginMedical.png')",
-    // height: "130vh",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    color: "white",
-  },
-  containerSection: {
-    // border: "1px solid red",
-    width: "50%",
-    height: "80vh",
-  },
-  Login: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  containerInput: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.6pc",
-    // border: "1px solid red",
-    width: "23pc",
-  },
-  Form: {
-    marginTop: "2pc",
-    display: "flex",
-    flexDirection: "column",
-    gap: "1pc",
-  },
-};
 export default Login;

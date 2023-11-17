@@ -10,6 +10,11 @@ export const GlobalStyles = {
     justifyContent: "center",
     flexDirection: "column",
   },
+  SpaceBetween: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   borderBtn: {
     borderRadius: "8px",
     border: "1px solid white",
